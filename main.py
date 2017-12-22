@@ -47,7 +47,7 @@ if __name__=='__main__':
     # calc entropy
     words = it.inputTextFile()
     letters = it.inputTextFile(byLetter = True)
-    mlWords = it.multipleWords(words, ml=10)
+    mlWords = it.multipleWords(words, ml=2)
     rankingL = it.countSame(letters)
     rankingW = it.countSame(words)
     ranking2 = it.countSame(mlWords)

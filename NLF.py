@@ -6,13 +6,15 @@ def inputTextFile(byLetter = False):
     with open('steveSpeech.txt', 'r') as f:
         for line in f:
             output.extend(replacer(line).split(" "))
+            output.extend([i for i in replacer(line).split(" ") if i != ''])
     if byLetter:
         return wordsToLetters(output)
+    output.remove('')
     return output
         
 
 def replacer(line):
-    repList = ["[", "]", ":", "　", "\n", "", ".", ","]
+    repList = ["!","?", "*","[", "]", ":", "　", "\n", "", ".", ",", '"']
     for rep in repList:
         line = line.replace(rep, "")
     return line
@@ -37,9 +39,12 @@ def multipleWords(words, ml=2):
         return mulWords
     
     for idx,word in enumerate(words[0:len(words)-ml+1]):
+        if word == '':
+            continue
         mulWord = word
         for i in range(ml-1):
-            mulWord += " " + words[idx+i+1]
+            if words[idx+(i+1)] != '':
+                mulWord += " " + words[idx+(i+1)]
         mulWords.append(mulWord)
     return mulWords
 
