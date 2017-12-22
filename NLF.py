@@ -14,7 +14,7 @@ def inputTextFile(byLetter = False):
         
 
 def replacer(line):
-    repList = ["!","?", "*","[", "]", ":", "　", "\n", "", ".", ",", '"']
+    repList = ["!","?", "*","[", "]", ":", "　", "\n", ".", ",", '"']
     for rep in repList:
         line = line.replace(rep, "")
     return line
