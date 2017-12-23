@@ -9,7 +9,8 @@ def inputTextFile(byLetter = False):
             output.extend([i for i in replacer(line).split(" ") if i != ''])
     if byLetter:
         return wordsToLetters(output)
-    output.remove('')
+    while '' in output:    
+        output.remove('')
     return output
         
 
