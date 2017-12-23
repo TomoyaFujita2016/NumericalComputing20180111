@@ -61,15 +61,20 @@ def generateRandomText(targets, length=100, byAddSpace=False):
     # [["Apple",13], ["Vitamin", 5], ...]
     keyList = []
     output = []
+
+    # get word amount
+    wordPerOne = len(targets[0][0].split(" "))
+
     if byAddSpace:
         spacer = " "
     else:
         spacer = ""
+
     for idx, target in enumerate(targets):
         for i in range(target[1]):
             keyList.append(idx)
     keyLength = len(keyList)
-    for i in range(length):
+    for i in range(int(length / wordPerOne)):
         rnd = random.randint(0,keyLength-1)
         output.append(targets[keyList[rnd]][0])
     return spacer.join(output)
